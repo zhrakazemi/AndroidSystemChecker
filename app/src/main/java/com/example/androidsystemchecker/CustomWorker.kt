@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.delay
+import java.util.Calendar
 
 
 class CustomWorker constructor(
@@ -24,6 +25,8 @@ class CustomWorker constructor(
 
         Log.i("Broadcast Receiver", "airplane mode: $airPlaneModeOn")
         Log.i("Broadcast Receiver", "Bluetooth: $bluetoothon")
+        writeData("airplane" , Calendar.getInstance().time.toString() , airPlaneModeOn.toString() )
+        writeData("bluetooth" , Calendar.getInstance().time.toString() ,bluetoothon.toString() )
         return Result.success()
     }
 }
